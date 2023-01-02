@@ -45,8 +45,9 @@ This query should return:
 -  the employee's first and last name
 -  the name of each product
 -  and how many of that product they sold */
-SELECT employees.EmployeeID, employees.FirstName, employees.LastName, products.Name as "Product Name", sales.Quantity as "Quantity Sold"
+SELECT employees.EmployeeID, employees.FirstName, employees.LastName, products.Name as "Product Name", SUM(sales.Quantity) as "Quantity Sold"
 FROM sales
 JOIN products ON sales.ProductID = products.ProductID
 JOIN employees ON sales.EmployeeID = employees.EmployeeID
-ORDER BY employees.LastName;
+GROUP BY employees.EmployeeID, products.ProductID
+ORDER BY employees.FirstName;
