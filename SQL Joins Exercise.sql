@@ -16,7 +16,8 @@ SELECT SUM(sales.Quantity) as "Total Quantity Sold", employees.LastName as "Empl
 FROM sales
 JOIN employees ON sales.EmployeeID = employees.EmployeeID
 GROUP BY sales.EmployeeID
-ORDER BY SUM(sales.Quantity) DESC;
+ORDER BY SUM(sales.Quantity) DESC
+LIMIT 2;
 
 /* joins: find the name of the department, and the name of the category for Appliances and Games */
 SELECT departments.Name as "Department Name", categories.Name as "Category Name"
